@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorority Merch Store - Materialize Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize carousel
+            var carouselElems = document.querySelectorAll('.carousel');
+            M.Carousel.init(carouselElems, { fullWidth: true, indicators: true });
+
+            // Initialize collapsible
+            var collapsibleElems = document.querySelectorAll('.collapsible');
+            M.Collapsible.init(collapsibleElems);
+        });
+
+        // Function to display selected merch
+        function displayMerch() {
+            const selectedMerch = document.querySelector('input[name="merch"]:checked').value;
+            document.getElementById('merch-response').innerText = `You selected: ${selectedMerch}`;
+        }
+
+        // Function to handle email subscription form submission
+        function submitEmail(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            document.getElementById('email-response').innerText = `Thank you for subscribing! Updates will be sent to: ${email}`;
+            document.getElementById('email').value = ''; // Clear the input
+
+            // Display modal
+            const modalText = document.getElementById('modal-content-text');
+            modalText.innerText = `Thank you for subscribing! Updates will be sent to: ${email}`;
+            const modal = M.Modal.getInstance(document.getElementById('modal1'));
+            modal.open();
+        }
+    </script>
+    <style>
+        /* Additional inline styles for carousel */
+        .carousel {
+            width: 100%; /* Set width to 100% */
+            margin: 0; /* Remove margin */
+        }
+
+        .carousel img {
+            width: 100%; /* Ensure images fill the carousel width */
+            height: auto; /* Maintain aspect ratio */
+            object-fit: cover; /* Cover the carousel area */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Sorority Merch Store</h1>
+        <nav class="header-bg">
+            <a href="index.html">Home</a>
+            <a href="learnmore.html">Learn More About the Merch</a>
+            <a href="aboutme.html">Learn More About Me</a>
+            <a href="contact.html">Contact</a>
+            <a href="materialize.html">Materialize Page</a>
+        </nav>
+    </header>
+    
+    <main class="section-bg">
+        <section>
+            <h2>Welcome to Ella's Sorority Merch Sale!</h2>
+            <blockquote>Explore below our exciting new collection drop!</blockquote>
+        </section>
+
+        <!-- Carousel Section -->
+        <div class="carousel">
+            <a class="carousel-item" href="#one!"><img src="https://blog.bonfire.com/wp-content/uploads/2019/08/greek-9-1.jpg"></a>
+            <a class="carousel-item" href="#two!"><img src="https://www.somethinggreek.com/cdn/shop/files/800x800_printed_shirt_2_6167cd64-00e0-46e7-8d68-932e502b10b4.png?v=1722003751&width=3200"></a>
+            <a class="carousel-item" href="#three!"><img src="https://www.emersoncoast.com/cdn/shop/collections/Z7Z_8651_cbb740a5-2c3e-4084-9021-c5556226480c_1600x.jpg?v=1703189390"></a>
+            <a class="carousel-item" href="#four!"><img src="https://www.emersoncoast.com/cdn/shop/collections/semi-formal_68012baf-47aa-441d-910c-c2562df74057_1600x.jpg?v=1697834327"></a>
+        </div>
+
+        <h3>Frequently Asked Questions</h3>
+        <ul class="collapsible">
+            <li>
+                <div class="collapsible-header">What payment methods are accepted?</div>
+                <div class="collapsible-body"><span>We accept credit and debit cards.</span></div>
+            </li>
+            <li>
+                <div class="collapsible-header">What is the return policy?</div>
+                <div class="collapsible-body"><span>Returns are accepted within 30 days. Items must be shipped back.</span></div>
+            </li>
+            <li>
+                <div class="collapsible-header">How long does shipping take?</div>
+                <div class="collapsible-body"><span>Shipping typically takes 5-7 business days.</span></div>
+            </li>
+        </ul>
+
+        <div id="radio-section" class="section container">
+            <h2>What merch are you most interested in?</h2>
+            <form>
+                <p>
+                    <label>
+                        <input name="merch" type="radio" value="T-Shirt" onclick="displayMerch()"/>
+                        <span>T-Shirt</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="merch" type="radio" value="Hoodie" onclick="displayMerch()"/>
+                        <span>Hoodie</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="merch" type="radio" value="Hat" onclick="displayMerch()"/>
+                        <span>Hat</span>
+                    </label>
+                </p>
+            </form>
+            <div id="merch-response"></div>
+        </div>
+
+        <!-- Email Feedback Section -->
+        <div id="feedback-section" class="section container">
+            <h2>Subscribe for Updates</h2>
+            <form onsubmit="submitEmail(event)">
+                <div class="input-field">
+                    <input id="email" type="email" required>
+                    <label for="email">Email</label>
+                </div>
+                <button type="submit" class="btn waves-effect waves-light">Subscribe</button>
+            </form>
+            <div id="email-response"></div>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Ella's Sorority Merch Store</p>
+        </footer>
+    </main>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
